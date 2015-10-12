@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>React Componets 1</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    </head>
+    <body>
+        <div id="content"></div>
+        <script type="text/jsx">
+        /*** @jsx React.DOM */
+
+        var data = [
+        {first:'Alex', last:'Davis'},
+        {first:'John', last:'Smith'},
+        {first:'Larry', last:'Doe'}
+        ]
+
+        var PersonApp = React.createClass({
+            render:function(){
+                return (
+                    <div>
+                        <h1>this is the app</h1>
+                        <PersonList data={this.props.data} />
+                    </div>
+                    )
+            }
+        });
+
+        var Person = React.createClass({
+            render:function(){
+                return(
+                    <div>
+                        <h2>{this.props.last}, {this.props.first}</h2>
+                    </div>
+                    )
+            }
+        })
+
+        var PersonList = React.createClass({
+            render:function(){
+                var people = this.props.data.map(function(person){
+                    return <Person first={person.first} last={person.last} />
+                });
+                return (
+                    <div>
+                        {people}
+                    </div>
+                    )
+            }
+        })
+
+        React.render(<PersonApp data={data} />, document.getElementById('content'))
+
+        
+
+        </script>
+    </body>
+</html>
