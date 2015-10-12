@@ -12,11 +12,15 @@
 
 	<script type="text/jsx">
 		var MyComponet = React.createClass({
+			doThing: function(){
+				alert("The text diplaying is: " + this.props.children);
+			},
+
 			render: function() {
 				return(
 					<div>
 						<h3>{this.props.user}</h3>
-						<p>{this.props.children}</p>
+						<a onClick={this.doThing} href="#" >Click Me</a>
 					</div>
 				);
 			}
